@@ -3,20 +3,28 @@
 namespace Gez\Controller;
 
 use Gez\Core\View\Renderer;
-use Gez\Repository\SongRepository;
-use League\Plates\Engine;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class HomeController
+ *
+ * @package Gez\Controller
+ */
 class HomeController
 {
+    /** @var Renderer */
     private $renderer;
 
+    /**
+     * @param Renderer $renderer
+     */
     public function __construct(Renderer $renderer)
     {
         $this->renderer = $renderer;
     }
 
+    /**
+     * @return \Zend\Diactoros\Response\HtmlResponse
+     */
     public function home()
     {
         return $this->renderer->renderView('home', [

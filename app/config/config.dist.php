@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'app_name' => 'Base Project',
+    'app_name' => 'Base Web App',
     'debug' => true,
     'dbal' => [
-        'dbname' => 'base-project',
+        'dbname' => 'base-web-app',
         'user' => 'root',
         'password' => 'password',
         'host' => 'localhost',
