@@ -1,0 +1,27 @@
+{
+    "name": "gez/base-web-app",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Gez",
+            "email": "gezpage@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    },
+    "require": {
+        "doctrine/dbal": "^2.5",
+        "league/container": "^2.2",
+        "league/route": "^2.0",
+        "zendframework/zend-diactoros": "^1.3",
+        "psr/http-message": "^1.0",
+        "league/plates": "^3.3"
+    },
+    "require-dev": {
+        "raveren/kint": "^1.0"
+    }
+}
