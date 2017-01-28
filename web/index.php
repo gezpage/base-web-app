@@ -8,5 +8,6 @@ try {
     $response = $routes->dispatch();
     $container->get('Zend\Diactoros\Response\EmitterInterface')->emit($response);
 } catch (Exception $e) {
-    echo $container->get('League\Plates\Engine')->render('error', ['e' => $e]);
+    $container->get('Monolog\Logger')->error(get_class($e), ['exception' => $e]);
+    echo $container->get('League\Plates\Engine')->render('error', ['exception' => $e]);
 }

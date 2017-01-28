@@ -11,4 +11,5 @@ return [
         'driver' => 'pdo_mysql',
     ],
     'view_dir' => realpath(__DIR__ . '/../../views'),
+    'app_log' => realpath(__DIR__ . '/../../app/log/app.log'),
 ];

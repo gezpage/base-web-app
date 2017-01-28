@@ -70,6 +70,16 @@ class Container
             ->withArgument('League\Plates\Engine')
             ->withArgument('Psr\Http\Message\ResponseInterface')
             ->withArgument('config');
+
+        $container->share('Monolog\Logger', function() use ($config) {
+            $log = new \Monolog\Logger('app');
+            $log->pushHandler(new \Monolog\Handler\StreamHandler(
+                $config['app_log'],
+                \Monolog\Logger::DEBUG
+            ));
+
+            return $log;
+        });
     }
 
     /**

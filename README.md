@@ -10,6 +10,7 @@ This is intended to be a ready to use web app base, making use of third party co
 * Create Repository classes in */src/Gez/Repository* (using [Doctrine DBAL](http://www.doctrine-project.org/projects/dbal.html))
 * Configure container services in */src/Gez/Container/Services.php* (using [league/container](http://container.thephpleague.com/) with auto-wiring enabled)
 * Make use of [PSR-7 Messages](http://www.php-fig.org/psr/psr-7/) (using [Zend Diactoros](https://zendframework.github.io/zend-diactoros/))
+* Log file in */app/log/app.log* (using [Monolog](https://github.com/Seldaek/monolog))
 * Add Bower packages in */web* ([Bootstrap](http://getbootstrap.com/) & [jQuery](https://jquery.com/) preinstalled)
 * Debug with calls to d() (using [Kint](http://raveren.github.io/kint/))
 
