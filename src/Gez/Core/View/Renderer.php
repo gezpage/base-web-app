@@ -22,13 +22,13 @@ class Renderer
     /**
      * @param Engine            $templates
      * @param ResponseInterface $response
-     * @param array             $config
+     * @param array             $data
      */
-    public function __construct(Engine $templates, ResponseInterface $response, array $config)
+    public function __construct(Engine $templates, ResponseInterface $response, array $data)
     {
         $this->templates = $templates;
-        $this->templates->addData(['config' => $config]);
         $this->response = $response;
+        $this->templates->addData($data);
     }
 
     /**

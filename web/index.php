@@ -8,4 +8,3 @@ try {
     $container->get('Monolog\Logger')->error(get_class($e), ['exception' => $e]);
     echo $container->get('League\Plates\Engine')->render('error', ['exception' => $e]);
 }
-

@@ -66,11 +66,6 @@ class Container
 
         $container->share('League\Plates\Engine')->withArgument($config['view_dir']);
 
-        $container->share('Gez\Core\View\Renderer')
-            ->withArgument('League\Plates\Engine')
-            ->withArgument('Psr\Http\Message\ResponseInterface')
-            ->withArgument('config');
-
         $container->share('Monolog\Logger', function() use ($config) {
             $log = new \Monolog\Logger('app');
             $log->pushHandler(new \Monolog\Handler\StreamHandler(
@@ -80,6 +75,29 @@ class Container
 
             return $log;
         });
+
+        $container->share('DebugBar\DebugBar', function() {
+            $debugbar = new \DebugBar\StandardDebugBar();
+            $debugbar->addCollector(new \DebugBar\DataCollector\ConfigCollector(
+                $this->container->get('config')
+            ));
+            $debugbar->addCollector(new \DebugBar\Bridge\DoctrineCollector(
+                new \Doctrine\DBAL\Logging\DebugStack()
+            ));
+            $debugbar->addCollector(new \DebugBar\Bridge\MonologCollector(
+                $this->container->get('Monolog\Logger')
+            ));
+
+            return $debugbar;
+        });
+
+        $container->share('Gez\Core\View\Renderer')
+            ->withArgument('League\Plates\Engine')
+            ->withArgument('Psr\Http\Message\ResponseInterface')
+            ->withArgument([
+                'config' => $this->container->get('config'),
+                'debugbar' => $this->container->get('DebugBar\DebugBar'),
+            ]);
 
         $container->add('Relay\RelayBuilder', function() {
             $resolver = function ($class) {

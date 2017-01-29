@@ -7,6 +7,18 @@
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+    <?php if ($config['debug']): ?>
+
+    <style>
+        <?php $jsDebugBar = $debugbar->getJavascriptRenderer(); ?>
+        <?php $jsDebugBar->dumpCssAssets() ?>
+    </style>
+    <script type="text/javascript">
+        <?php $jsDebugBar->dumpJsAssets() ?>
+    </script>
+
+    <?php endif ?>
+
 </head>
 <body>
 
@@ -17,6 +29,10 @@
     <?=$this->section('content')?>
 
 </div>
+
+<?php if ($config['debug']): ?>
+<?=$jsDebugBar->render() ?>
+<?php endif ?>
 
 </body>
 </html>
