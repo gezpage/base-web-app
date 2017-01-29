@@ -80,6 +80,14 @@ class Container
 
             return $log;
         });
+
+        $container->add('Relay\RelayBuilder', function() {
+            $resolver = function ($class) {
+                return $this->container->get($class);
+            };
+
+            return new \Relay\RelayBuilder($resolver);
+        });
     }
 
     /**

@@ -17,22 +17,19 @@ class Routing
     /** @var RouteCollection */
     private $route;
 
-    /** @var ServerRequestInterface */
-    private $request;
-
-    /** @var ResponseInterface */
-    private $response;
-
     /**
      * @param RouteCollection        $route
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
      */
-    public function __construct(RouteCollection $route, ServerRequestInterface $request, ResponseInterface $response)
+    public function __construct(RouteCollection $route)
     {
         $this->route = $route;
-        $this->request = $request;
-        $this->response = $response;
+    }
+
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    {
+        $this->mapRoutes();
+
+        return $this->route->dispatch($request, $response);
     }
 
     /**
@@ -43,16 +40,5 @@ class Routing
         $this->route->setStrategy(new ParamStrategy());
 
         $this->route->map('GET', '/', 'Gez\Controller\HomeController::home');
-    }
-
-    /**
-     * @return ResponseInterface
-     */
-    public function dispatch()
-    {
-        return $this->route->dispatch(
-            $this->request,
-            $this->response
-        );
     }
 }
