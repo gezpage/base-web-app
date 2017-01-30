@@ -14,11 +14,11 @@ This is intended to be a ready to use web app base, making use of third party co
 * Log file in */app/log/app.log* (using [Monolog](https://github.com/Seldaek/monolog))
 * Add Bower packages in */web* ([Bootstrap](http://getbootstrap.com/) & [jQuery](https://jquery.com/) preinstalled)
 * Debug with calls to d() (using [Kint](http://raveren.github.io/kint/))
+* Analyse app in development with DebugBar ([DebugBar](https://github.com/maximebf/php-debugbar))
 
 # Todo
 
 * Create Ubuntu 16.04 LTS / PHP 7.x alternate Vagrant box
-* Addd DebugBar
 * Maybe preinstall asset pipeline; Webpack or Gulp
 * Maybe integrate an ORM (Doctrine?)
 * Maybe integrate a Mongo ODM layer
