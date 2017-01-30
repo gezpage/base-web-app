@@ -106,6 +106,17 @@ class Container
 
             return new \Relay\RelayBuilder($resolver);
         });
+
+        $container->add('Whoops\Run', function() {
+            $run = new \Whoops\Run();
+            $run->pushHandler(new \Whoops\Handler\PrettyPageHandler());
+            if (\Whoops\Util\Misc::isAjaxRequest()) {
+                $run->pushHandler(new \Whoops\Handler\JsonResponseHandler());
+            }
+
+            return $run;
+        });
+
     }
 
     /**

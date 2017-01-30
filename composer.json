@@ -25,6 +25,7 @@
         "maximebf/debugbar": "^1.13"
     },
     "require-dev": {
-        "raveren/kint": "^1.0"
+        "raveren/kint": "^1.0",
+        "filp/whoops": "^2.1"
     }
 }
