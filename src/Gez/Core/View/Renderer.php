@@ -4,7 +4,6 @@ namespace Gez\Core\View;
 
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
-use Zend\Diactoros\Response\HtmlResponse;
 
 /**
  * Class Renderer
@@ -35,12 +34,14 @@ class Renderer
      * @param string $view
      * @param array  $data
      *
-     * @return HtmlResponse
+     * @return ResponseInterface
      */
     public function renderView($view, array $data = [])
     {
-        return new HtmlResponse(
+        $this->response->getBody()->write(
             $this->templates->render($view, $data)
         );
+
+        return $this->response;
     }
 }

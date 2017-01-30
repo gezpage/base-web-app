@@ -32,7 +32,7 @@ class HomeController
     /**
      * @param RequestInterface $request
      *
-     * @return \Zend\Diactoros\Response\HtmlResponse
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function home(RequestInterface $request)
     {
