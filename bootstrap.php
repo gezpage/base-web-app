@@ -2,8 +2,15 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$config = require __DIR__ . '/app/config/config.php';
-$container = new Gez\Core\Service\Container($config);
+$configFile = __DIR__ . '/app/config/config.php';
+
+if (false === file_exists($configFile)) {
+    echo "Missing config file: {$configFile}. \n";
+    echo "Copy app/config/config.dist.php to app/config/config.php and edit. \n";
+    exit;
+}
+
+$container = new Gez\Core\Service\Container(include $configFile);
 
 if ($container->get('config')['debug'] === true) {
     ini_set('display_errors', 1);
