@@ -4,6 +4,7 @@ namespace Gez\Core\Service;
 
 use League\Container\Container as LeagueContainer;
 use League\Container\ReflectionContainer;
+use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
 
 /**
  * Class Container
@@ -62,7 +63,7 @@ class Container
             return $container->get('Psr\Http\Message\RequestInterface');
         });
 
-        $container->share('Zend\Diactoros\Response\EmitterInterface', \Zend\Diactoros\Response\SapiEmitter::class);
+        $container->share('Zend\HttpHandlerRunner\Emitter\EmitterInterface', SapiEmitter::class);
 
         $container->share('League\Plates\Engine')->withArgument($config['view_dir']);
 

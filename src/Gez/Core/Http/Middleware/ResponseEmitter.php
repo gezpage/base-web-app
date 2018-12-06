@@ -4,7 +4,7 @@ namespace Gez\Core\Http\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Zend\Diactoros\Response\EmitterInterface;
+use Zend\HttpHandlerRunner\Emitter\EmitterInterface;
 
 /**
  * Class ResponseEmitter
